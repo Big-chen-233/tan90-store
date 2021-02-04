@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     username: window.localStorage.getItem('username') == null ? '' : JSON.parse(window.localStorage.getItem('username' || '[]')),
     adminMenus: [],
-    products:[]
+    products:[],
+    items:[]
   },
   mutations: {
     initAdminMenu (state, menus) {
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     },
     setProducts(state,products){
       state.products=products
+    },
+    setItems(state,items){
+      state.items = items
     }
   },
   actions: {
@@ -32,6 +36,10 @@ export default new Vuex.Store({
   getters: {
     getProducts(state){
       return state.products
+    },
+    getItems(state){
+      return state.items
     }
-  }
+  },
+
 })

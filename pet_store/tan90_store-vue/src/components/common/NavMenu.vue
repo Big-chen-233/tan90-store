@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-menu
-      :default-active="0"
+      :default-active="'0'"
       mode="horizontal"
       background-color="#545c64"
       text-color="#fff"
@@ -62,7 +62,7 @@ export default {
   name: "Menu",
   data() {
     return {
-      cid: ''
+      cid: '',
     }
   },
   methods:{
@@ -90,9 +90,8 @@ export default {
     },
     register() {
       this.$router.push('/register')
-    }
+    },
   },
-
 }
 </script>
 

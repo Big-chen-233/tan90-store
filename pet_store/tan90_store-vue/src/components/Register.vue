@@ -5,7 +5,10 @@
     <h3 class="login_title">用户注册</h3>
     <el-form-item prop="username">
       <el-input type="text" v-model="loginForm.username"
-                auto-complete="off" placeholder="账号"></el-input>
+                auto-complete="off" placeholder="账号" @change="isExist"></el-input>
+      <p>{{message}}</p>
+      <p style="color: crimson">{{error}}</p>
+
     </el-form-item>
     <el-form-item prop="password">
       <el-input type="password" v-model="loginForm.password"
@@ -32,17 +35,34 @@ export default {
         username: '',
         password: '',
       },
-      loading: false
+      loading: false,
+      message:'',
+      error:'',
+      exist:1
     }
   },
   methods:{
     register() {
-      if(this.loginForm.username!==''&&this.loginForm.password!==''){
+      if(this.loginForm.username!==''&&this.loginForm.password!==''&&this.exist===0){
         var _this = this
         _this.$router.push({path:'/finish', query: this.loginForm})
       }else{
         alert("填写有效的信息")
       }
+    },
+    isExist(){
+      this.message = ''
+      this.error = ''
+      this.$axios.post('login/isExist',this.loginForm.username)
+        .then(resp => {
+          if (resp.data.code === 200) {
+            this.message = resp.data.result
+            this.exist=0
+          }else {
+            this.error = "用户名已被使用"
+            this.exist=0
+          }
+        }).catch()
     }
   }
 }

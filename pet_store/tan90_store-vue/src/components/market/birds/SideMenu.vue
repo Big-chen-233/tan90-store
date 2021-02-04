@@ -1,7 +1,8 @@
 <template>
   <el-menu
+
     class="el-menu-vertical-demo"
-    default-active="0"
+    :default-active="'0'"
     @select="handleSelect"
     active-text-color="red">
     <el-menu-item index="0">
@@ -31,8 +32,9 @@ export default {
     handleSelect(key, keyPath){
       this.pid=key;
       this.$emit('indexSelect')
-    }
-  }
+    },
+
+  },
 }
 </script>
 
