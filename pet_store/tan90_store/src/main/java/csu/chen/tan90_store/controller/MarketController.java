@@ -49,4 +49,10 @@ public class MarketController {
             return tmp;
         }
     }
+    @GetMapping(value = "/api/search/{keywords}")
+    public List<Item> search(@PathVariable("keywords") String keywords){
+        return null;
+    }
+
+
 }

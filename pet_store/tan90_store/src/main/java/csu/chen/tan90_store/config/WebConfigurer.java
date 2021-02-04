@@ -31,11 +31,18 @@ public class WebConfigurer implements WebMvcConfigurer {
         registry.addInterceptor(getLoginInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/index.html")
+                .excludePathPatterns("/api/**")
                 .excludePathPatterns("/api/login/login")
                 .excludePathPatterns("/api/login/register")
                 .excludePathPatterns("/api/logout")
                 .excludePathPatterns("/api/categories/*/products")
-                .excludePathPatterns("/api/categories/*/products/*/items");
+                .excludePathPatterns("/api/categories/*/products/*/items")
+                .excludePathPatterns("/api/shopcart/getList")
+                .excludePathPatterns("/api/shopcart/update")
+                .excludePathPatterns("/api/shopcart/buy")
+                .excludePathPatterns("/api/shopcart/valChange")
+                .excludePathPatterns("/api/shopcart/delete")
+                .excludePathPatterns("/api/shopcart/getOrder");
         //草你大爷的shiro
 
     }

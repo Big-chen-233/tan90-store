@@ -26,13 +26,10 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         Subject subject = SecurityUtils.getSubject();
         // 使用 shiro 验证
-        if (!subject.isAuthenticated()) {
-            return false;
-        }
-        return true;
+        return subject.isAuthenticated();
     }
 
-    private boolean begingWith(String page, String[] requiredAuthPages) {
+    private boolean beginWith(String page, String[] requiredAuthPages) {
         boolean result = false;
         for (String requiredAuthPage : requiredAuthPages) {
             if(StringUtils.startsWith(page, requiredAuthPage)) {

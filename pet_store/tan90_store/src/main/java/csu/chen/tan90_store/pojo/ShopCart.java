@@ -24,6 +24,16 @@ public class ShopCart {
 
     int quantity;
 
+    int isPay;
+
+    public int getIsPay() {
+        return isPay;
+    }
+
+    public void setIsPay(int isPay) {
+        this.isPay = isPay;
+    }
+
     public int getId() {
         return id;
     }

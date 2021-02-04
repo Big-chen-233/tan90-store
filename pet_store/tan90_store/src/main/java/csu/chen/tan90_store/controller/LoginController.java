@@ -37,7 +37,7 @@ public class LoginController {
             return ResultFactory.buildSuccessResult(username);
         }catch (AuthenticationException e){
             String message = "账号密码错误";
-            return ResultFactory.buildSuccessResult(message);
+            return ResultFactory.buildFailResult(message);
         }
     }
 
@@ -63,6 +63,16 @@ public class LoginController {
         simAccountService.add(user);
         return ResultFactory.buildSuccessResult(user);
     }
+
+    @PostMapping(value = "/api/login/isExist")
+    @ResponseBody
+    public Result isExist(@RequestBody String username){
+        username = username.split("=")[0];
+        boolean exist = simAccountService.isExist(username);
+        if(exist) return ResultFactory.buildFailResult("用户名已被使用");
+        else return ResultFactory.buildSuccessResult("可以注册");
+    }
+
     @PostMapping(value = "/api/login/finish")
     @ResponseBody
     public Result finish(@RequestBody Account account){

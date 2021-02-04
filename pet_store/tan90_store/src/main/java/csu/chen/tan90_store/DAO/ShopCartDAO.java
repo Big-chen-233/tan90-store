@@ -7,6 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ShopCartDAO extends JpaRepository<ShopCart ,Integer> {
-    List<ShopCart> getAllByUsername(String username);
-
+    List<ShopCart> getAllByUsernameAndIsPay(String username,Integer isPay);
 }
